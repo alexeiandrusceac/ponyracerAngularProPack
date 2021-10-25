@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RaceModel} from '../models/race.model';
 import {RaceService} from '../race.service';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {retry} from 'rxjs/operators';
 
 @Component({
   selector: 'pr-races',
@@ -12,7 +14,8 @@ export class RacesComponent implements OnInit {
   constructor(private raceService: RaceService) {}
 
   ngOnInit(): void {
-    this.raceService.list().subscribe(races => (this.races = races));
+      this.raceService.list().subscribe(races => {this.races = races; });
+    // this.raceService.list().pipe(retry(3)).subscribe(races => {this.races = races; });
   }
 
 }

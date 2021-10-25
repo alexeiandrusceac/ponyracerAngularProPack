@@ -1,0 +1,13 @@
+[
+  {
+    "description": "ponyracer App should display welcome message",
+    "assertions": [
+      {
+        "passed": false,
+        "errorMsg": "Expected [ Entry({ level: SEVERE, message: 'http://localhost:4200/favicon.ico - Failed to load resource: the server responded with a status of 404 (Not Found)', timestamp: 1635169891860, type: '' }) ] not to contain <jasmine.objectContaining(Object({ level: SEVERE }))>.",
+        "stackTrace": "Error: Failed expectation\n    at UserContext.<anonymous> (/home/tekoway/ponyracerAngularProPack/e2e/src/app.e2e-spec.ts:19:22)\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"
+      }
+    ],
+    "duration": 665
+  }
+]
