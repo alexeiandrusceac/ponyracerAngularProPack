@@ -1,8 +1,9 @@
-<div>
-<h2>{{raceModel.name}}</h2>
+<div style="margin-top:50px;padding:20px; border:1px solid #7f7f7f; border-radius:20px;">
+  <h2>{{ raceModel.name }}</h2>
+  <p>{{ raceModel.startInstant | fromNow }}</p>
   <div class="row">
-  <div *ngFor="let pony of raceModel.ponies" class="col-sm-2">
-    <pr-pony [ponyModel]="pony"></pr-pony></div>
+    <div *ngFor="let pony of raceModel.ponies " class="col-sm-2">
+      <a href="" [routerLink]="['/races',raceModel.id,'ponies',pony.id]"><pr-pony [ponyModel]="pony"></pr-pony></a>
+    </div>
+  </div>
 </div>
-</div>
-

@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
- navbarCollapsed = true;
- toggleNavbar(): void{
+  navbarCollapsed = true;
+  toggleNavbar(): void {
     this.navbarCollapsed = !this.navbarCollapsed;
- }
+  }
 }

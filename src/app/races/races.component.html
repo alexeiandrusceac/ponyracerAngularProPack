@@ -1,3 +1,16 @@
-<div *ngFor = "let race of races | slice:0:4">
-  <pr-race [raceModel]="race"></pr-race>
-</div>
+<mat-tab-group>
+  <mat-tab label="All Races" title="All Races">
+    <div style="margin: 70px">
+      <div *ngFor="let race of races">
+        <pr-race [raceModel]="race"></pr-race>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="First 4 races" title="First 4 races">
+    <div style="margin: 70px">
+      <div *ngFor="let race of races | slice: 0:4">
+        <pr-race [raceModel]="race"></pr-race>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -2,21 +2,27 @@ import { TestBed } from '@angular/core/testing';
 
 import { PonyComponent } from './pony.component';
 import { PonyModel } from '../models/pony.model';
+import {PonyService} from '../pony.service';
+import {HttpClient, HttpHandler} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
 
 describe('PonyComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      declarations: [PonyComponent]
+      declarations: [PonyComponent],
+      providers: [ {provide: PonyService}]
     })
   );
 
   it('should have method to get the image URL', () => {
     // given a pony component with a PURPLE pony
-    const ponyComponent: PonyComponent = new PonyComponent();
+    const fixture = TestBed.createComponent(PonyComponent);
+    const ponyComponent: PonyComponent = fixture.componentInstance;
     ponyComponent.ponyModel = { id: 1, name: 'Fast Rainbow', color: 'PURPLE' };
 
     // when we call the method for the URL
     const url = ponyComponent.getPonyImageUrl();
+    // ponyComponent.getPonyImageUrl();
 
     // then we should have a nice URL
     expect(url).withContext('The URL built with `getPonyImageUrl` is not correct').toBe('assets/images/pony-purple.gif');
