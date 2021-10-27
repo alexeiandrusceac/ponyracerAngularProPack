@@ -13,6 +13,10 @@ import { ROUTES } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule} from '@angular/material/tabs';
 import { PonyReusableComponentComponent } from './pony-reusable-component/pony-reusable-component.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -23,8 +27,19 @@ import { PonyReusableComponentComponent } from './pony-reusable-component/pony-r
     PonyComponent,
     FromNowPipe,
     PonyracerviewComponent,
-    PonyReusableComponentComponent],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(ROUTES), MatTabsModule, BrowserAnimationsModule],
+    PonyReusableComponentComponent,
+    RegisterFormComponent,
+    LoginFormComponent],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterModule.forRoot(ROUTES),
+        MatTabsModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

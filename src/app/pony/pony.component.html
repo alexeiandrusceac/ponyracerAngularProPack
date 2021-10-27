@@ -1,4 +1,5 @@
-<figure (click)="clicked()">
-  <img [src]="getPonyImageUrl()" [alt]="ponyModel?.name" />
-  <figcaption>{{ ponyModel?.name }}</figcaption>
+<figure (click)="clicked()" *ngIf="ponyModel">
+  <img [src]="getPonyImageUrl()" [alt]="ponyModel.name" />
+  <figcaption>{{ ponyModel.name }}</figcaption>
 </figure>
+

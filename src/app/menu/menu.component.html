@@ -6,9 +6,12 @@
   <div id="navbar" class="navbar-collapse" [class.collapse]="navbarCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/races" routerLinkActive #route="routerLinkActive">Races {{
+        <a class="nav-link" routerLink="races" routerLinkActive #route="routerLinkActive">Races {{
           route.isActive ? '(here)' : '' }}</a>
       </li>
+        <li class="nav-item" >
+            <a class="nav-link" routerLink="register">Register User</a>
+        </li>
     </ul>
   </div>
 </nav>

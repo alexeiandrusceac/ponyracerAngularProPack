@@ -15,4 +15,7 @@ export class PonyService {
       map((data: any) => id ? data.filter((item: any) => item.id === Number(id))[0] : data),
     );
   }
+  /*get(id: string| null| undefined): Observable<PonyModel> {
+      return this.httpClient.get<PonyModel>('https://ponyracer.ninja-squad.com/api/ponies',{ id: id});
+  }*/
 }
