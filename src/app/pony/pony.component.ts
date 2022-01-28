@@ -1,25 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PonyModel } from '../models/pony.model';
-import { PonyService } from '../pony.service';
+import { HttpService } from '../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'pr-pony',
-    // template: `
-    //     <figure (click)="clicked()" *ngIf="ponyModel">
-    //         <img [src]="'assets/images/pony-' + this.ponyModel.color.toLowerCase() + '.gif'" [alt]="ponyModel.name"/>
-    //         <figcaption>{{ ponyModel.name }}</figcaption>
-    //     </figure>`,
     templateUrl: './pony.component.html',
     styleUrls: ['./pony.component.css']
 })
 export class PonyComponent implements OnInit {
-    constructor(
-        private ponyService: PonyService,
-        private route: ActivatedRoute,
-    ) {
-
-    }
+    constructor(private ponyService: HttpService, private route: ActivatedRoute) {}
 
     @Input() ponyModel!: PonyModel;
 
@@ -29,7 +19,7 @@ export class PonyComponent implements OnInit {
         const id = this.route.snapshot.paramMap.get('ponyID');
 
         if (!this.ponyModel) {
-            this.ponyService.get(id).subscribe(ponyModel => this.ponyModel = ponyModel);
+            // this.ponyService.getPonyByID(id).subscribe(ponyModel => (this.ponyModel = ponyModel));
         }
     }
 

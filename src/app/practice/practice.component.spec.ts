@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PonyracerviewComponent } from './ponyracerview.component';
+import { PracticeComponent } from './practice.component';
 
-describe('PonyracerviewComponent', () => {
-    let component: PonyracerviewComponent;
-    let fixture: ComponentFixture<PonyracerviewComponent>;
+describe('PracticeComponent', () => {
+    let component: PracticeComponent;
+    let fixture: ComponentFixture<PracticeComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [PonyracerviewComponent]
+            declarations: [PracticeComponent]
         }).compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(PonyracerviewComponent);
+        fixture = TestBed.createComponent(PracticeComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
