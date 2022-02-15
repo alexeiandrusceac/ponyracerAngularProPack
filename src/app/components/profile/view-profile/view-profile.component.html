@@ -1,0 +1,57 @@
+<div class="form-container">
+    <h1>Your details</h1>
+    <div class="item">
+        <span class="title">Name:</span><span>{{ profile.data.firstName + profile.data.lastName }}</span>
+    </div>
+    <div class="item">
+        <span class="title">Email:</span><span>{{ profile.data.email }}</span>
+    </div>
+    <div class="item">
+        <span class="title">Phone:</span><span>{{ profile.data.phone }}</span>
+    </div>
+    <div class="item">
+        <span class="title">Address:</span><span>{{ profile.data.address }}</span>
+    </div>
+    <div class="item">
+        <span class="title">Profession:</span><span>{{ profile.data.profession }}</span>
+    </div>
+
+    <div>
+        <ul>
+            <li *ngFor="let social of profile.socialMediaArray"><a routerLink="{{social.url}}"><i
+                class="fa fa-{{social.socialMedia | lowercase}}-square fa-5x" aria-hidden="true"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div class="form-container">
+    <h1>Your Education</h1>
+    <div class="item mb-10" *ngFor="let education of profile.educationArray;let indexOfelement=index;">
+        <div class="rounded">{{indexOfelement + 1}}</div>
+        <div class="info">
+            <div class="item">
+                My master studies
+            </div>
+            <div class="item">
+                <span>{{education.education}}</span>
+                <span>{{education.educationType}}</span> /
+                <span>{{education.graduationDate | date }}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="form-container">
+    <h1>Your Jobs</h1>
+    <div class="item mb-10" *ngFor="let job of profile.jobArray;let indexOfelement=index;">
+        <div class="rounded">{{indexOfelement + 1}}</div>
+        <div class="info">
+            <div class="item">
+                <span>{{job.name}} at {{job.companyName}} in {{ job.city}}</span>
+            </div>
+            <div class="item">
+                <span> From {{job.startDate | date }} to {{(job.inPresent) ? ' Present' : job.endDate | date }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+

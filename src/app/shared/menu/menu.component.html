@@ -1,18 +1,9 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky">
-    <a class="navbar-brand" routerLink="/">PonyRacer</a>
-    <button type="button" class="navbar-toggler" (click)="toggleNavbar()">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbar" class="navbar-collapse" [class.collapse]="navbarCollapsed">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="races" routerLinkActive #route="routerLinkActive"
-                    >Races {{ route.isActive ? '(here)' : '' }}</a
-                >
-            </li>
-            <li class="nav-itemss">
-                <a class="nav-link" routerLink="register">Register User</a>
-            </li>
-        </ul>
+<mat-toolbar>
+    <span>App</span>
+    <div fxShow="true" fxHide.lt-md="true">
+        <a mat-button routerLink="create-profile">Profile</a>
+        <a mat-button routerLink="races">Races</a>
+        <a mat-button routerLink="exercises">Exercises</a>
+        <a mat-button routerLink="register">Login / Register User</a>
     </div>
-</nav>
+</mat-toolbar>

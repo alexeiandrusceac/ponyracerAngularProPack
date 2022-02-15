@@ -1,0 +1,222 @@
+<div class="form-container">
+    <form [formGroup]="profileForm">
+        <mat-form-field appearance="standard">
+            <mat-label> First Name</mat-label>
+            <input matInput formControlName="firstName" type="text"/>
+            <mat-error *ngIf="profileForm.get('firstName')?.hasError('required')">This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+            <mat-label> Last Name</mat-label>
+            <input matInput formControlName="lastName" type="text"/>
+            <mat-error *ngIf="profileForm.get('lastName')?.hasError('required')">This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label> Email</mat-label>
+            <input matInput formControlName="email" type="email"/>
+            <mat-error *ngIf="profileForm.get('email')?.hasError('required')">This field is required.</mat-error>
+            <mat-error *ngIf="profileForm.get('email')?.invalid">The email is not valid.</mat-error>
+
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label> Phone (+373)</mat-label>
+            <input matInput formControlName="phone" type="tel"/>
+            <mat-error *ngIf="profileForm.get('phone')?.hasError('required')">This field is required.</mat-error>
+            <mat-error *ngIf="profileForm.get('phone')?.invalid">The phone is not valid.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label> Physical Address</mat-label>
+            <input matInput formControlName="address" type="text"/>
+            <mat-error *ngIf="profileForm.get('address')?.hasError('required')">This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label> Profession</mat-label>
+            <input matInput formControlName="profession" type="text"/>
+            <mat-error *ngIf="profileForm.get('profession')?.hasError('required')">This field is required.</mat-error>
+        </mat-form-field>
+
+        <div class="add">
+            <div class="item">
+                <button mat-fab color="primary" aria-label="Add Education" (click)="addSocialMedia()">
+                    +
+                </button>
+                <h2>Add Social Media</h2>
+            </div>
+            <div class="col">
+                <div formArrayName="socialMedias" *ngFor="let social of socialMediasControls; let i=index">
+                    <div [formGroupName]="i">
+                        <mat-form-field>
+                            <mat-label>
+                                Select Social Media
+                            </mat-label>
+
+                            <mat-select formControlName="socialMedia">
+                                <mat-option *ngFor="let name of socialMedia" [value]="name">{{name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>
+                                Add Url of your profile
+                            </mat-label>
+                            <input matInput formControlName="url" type="url" name="url"/>
+
+                            <mat-error *ngIf="social.get('url')?.required">This field is required.
+                            </mat-error>
+                            <mat-error *ngIf="social.get('url')?.invalid">The url is not valid. Use domains
+                                like "{{convertSMediaToRegexString()}}"
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add">
+            <div class="item">
+                <button mat-fab color="primary" aria-label="Add Education" (click)="addEducations()">
+                    +
+                </button>
+                <h2> Add Educations</h2>
+            </div>
+
+            <div class="col">
+                <div formArrayName="educationsArray" *ngFor="let education of educationsControls; let i=index">
+                    <div [formGroupName]="i">
+                        <div class="item">
+                            <mat-form-field>
+                                <mat-label>
+                                    Education title
+                                </mat-label>
+                                <input matInput formControlName="educationName" type="text">
+                                <mat-error *ngIf="education.get('educationName')?.required">This field is
+                                    required.
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>
+                                    Graduation date
+                                </mat-label>
+                                <input matInput readonly formControlName="graduationDate"  (click)="graduationDatepicker.open()" [matDatepicker]="graduationDatepicker">
+                                <mat-datepicker-toggle matSuffix [for]="graduationDatepicker"></mat-datepicker-toggle>
+                                <mat-datepicker #graduationDatepicker>
+                                    <mat-datepicker-actions>
+                                        <button mat-button matDatepickerCancel>Cancel</button>
+                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-datepicker>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="item">
+                            <mat-form-field>
+                                <mat-label>
+                                    Education type
+                                </mat-label>
+                                <mat-select formControlName="educationType">
+                                    <mat-option *ngFor="let item of educations" [value]="item">{{item}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="add">
+            <div class="item">
+                <button mat-fab color="primary" aria-label="Add Education" (click)="addJob()">
+                    +
+                </button>
+                <h2>Add Jobs</h2>
+            </div>
+            <div class="col">
+                <div formArrayName="jobs" *ngFor="let job of jobControls; let i=index">
+                    <div [formGroupName]="i">
+                        <mat-form-field>
+                            <mat-label>
+                                Job name
+                            </mat-label>
+                            <input formControlName="jobName" matInput type="text">
+                            <mat-error *ngIf="job.get('jobName')?.required">This field is
+                                required.
+                            </mat-error>
+
+                        </mat-form-field>
+                        <div class="item">
+                            <mat-form-field>
+                                <mat-label>
+                                    Start date
+                                </mat-label>
+
+                                <input formControlName="startDate" readonly (click)="startDatepicker.open()" matInput [matDatepicker]="startDatepicker">
+                                <mat-error *ngIf="job.get('startDate')?.required">This field is
+                                    required.
+                                </mat-error>
+
+                                <mat-datepicker-toggle matSuffix  [for]="startDatepicker"></mat-datepicker-toggle>
+                                <mat-datepicker #startDatepicker>
+                                    <mat-datepicker-actions>
+                                        <button mat-button matDatepickerCancel>Cancel</button>
+                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="item">
+                            <mat-form-field>
+                                <mat-label>
+                                    End date
+                                </mat-label>
+                                <input formControlName="endDate" readonly (click)="endDatepicker.open()" matInput [matDatepicker]="endDatepicker"
+                                       [disabled]="inPresent">
+                                <mat-error *ngIf="job.get('endDate')?.required">This field is
+                                    required.
+                                </mat-error>
+
+                                <mat-datepicker-toggle matSuffix [for]="endDatepicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endDatepicker>
+                                    <mat-datepicker-actions>
+                                        <button mat-button matDatepickerCancel>Cancel</button>
+                                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                    </mat-datepicker-actions>
+                                </mat-datepicker>
+                            </mat-form-field>
+                            <div class="checkbox">
+                                <mat-checkbox (change)="untilPresent(job, $event.checked)" formControlName="inPresent">In
+                                    present
+                                </mat-checkbox>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <mat-form-field>
+                                <mat-label>
+                                    City
+                                </mat-label>
+                                <input matInput formControlName="city" type="text">
+                                <mat-error *ngIf="job.get('city')?.required">This field is required.
+                                </mat-error>
+
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>
+                                    Company name
+                                </mat-label>
+                                <input matInput formControlName="companyName" type="text">
+                                <mat-error *ngIf="job.get('companyName')?.required">This field is
+                                    required.
+                                </mat-error>
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div mat-dialog-actions class="button-container">
+            <button class="button" type="submit" [disabled]="profileForm.invalid" (click)="save()">
+                <span>Save my profile</span>
+            </button>
+        </div>
+    </form>
+</div>
+

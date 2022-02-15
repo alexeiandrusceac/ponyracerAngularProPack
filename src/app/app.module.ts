@@ -3,22 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './shared/menu/menu.component';
-import { RacesComponent } from './races/races.component';
-import { RaceComponent } from './race/race.component';
-import { PonyComponent } from './pony/pony.component';
+import { RacesComponent } from './components/races/races.component';
+import { RaceComponent } from './components/race/race.component';
+import { PonyComponent } from './components/pony/pony.component';
 import { FromNowPipe } from './from-now.pipe';
-import { PonyracerviewComponent } from './ponyracerview/ponyracerview.component';
+import { PonyracerviewComponent } from './components/ponyracerview/ponyracerview.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
-import { PonyReusableComponentComponent } from './pony-reusable-component/pony-reusable-component.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { PonyReusableComponentComponent } from './components/pony-reusable-component/pony-reusable-component.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { PracticeComponent } from './practice/practice.component';
-
+import { PracticeComponent } from './components/practice/practice.component';
+import { CreateProfileComponent } from './components/profile/create-profile/create-profile.component';
+import { ViewProfileComponent } from './components/profile/view-profile/view-profile.component';
+import { NgMaterialModule } from './ng-material/ng-material.module';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,18 +33,20 @@ import { PracticeComponent } from './practice/practice.component';
         PonyReusableComponentComponent,
         RegisterFormComponent,
         LoginFormComponent,
-        PracticeComponent
+        PracticeComponent,
+        CreateProfileComponent,
+        ViewProfileComponent
     ],
     imports: [
         BrowserModule,
-
         HttpClientModule,
         RouterModule.forRoot(ROUTES),
         MatTabsModule,
         BrowserAnimationsModule,
         FormsModule,
-        MatFormFieldModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgMaterialModule,
+        MatCheckboxModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
